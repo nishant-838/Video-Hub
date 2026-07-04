@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import {formatDistanceToNow} from "date-fns"
 
 const getThumbNail=(videoUrl)=>{
   if(!videoUrl){
@@ -7,7 +8,15 @@ const getThumbNail=(videoUrl)=>{
   return videoUrl.replace("/video/upload","/video/upload/so_1/").replace(".mp4",".jpg",".jpeg");
 };
 
+const getTimeAgo=(date)=>{
+  return formatDistanceToNow(
+    new Date(date),
+    {addSuffix:true}
+  );
+};
+
 function VideoCard({ video }) {
+    if(!video?._id) return null;
   return (
     <Link to={`/watch/${video._id}`}>
 
@@ -32,13 +41,15 @@ function VideoCard({ video }) {
             {video.uploader?.username}
           </p>
 
-          <div className="flex justify-between mt-2 text-sm text-gray-500">
+          <div className="mt-2 text-sm text-gray-500">
 
-            <span>{video.category}</span>
-
-            <span>
-              {video.views} views
-            </span>
+            <div className="flex items-center gap-2">
+              <span>{video.views} views</span>
+              <span>•</span>
+              <span>
+                {getTimeAgo(video.createdAt)}
+              </span>
+            </div>
 
           </div>
 

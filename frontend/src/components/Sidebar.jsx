@@ -39,10 +39,10 @@ function Sidebar() {
         </Link>
 
         <Link
-          to="/liked"
+          to="/liked-videos"
           className="p-3 rounded hover:bg-gray-100"
         >
-          👍 Liked Videos
+          ❤️ Liked Videos
         </Link>
 
         <hr />

@@ -110,3 +110,77 @@ exports.getMyVideos=async(req,res)=>{
     });
   }
 };  
+
+exports.updateVideo = async (req, res) => {
+  try {
+
+    const video = await Video.findById(req.params.id);
+
+    if (!video) {
+      return res.status(404).json({
+        message: "Video not found",
+      });
+    }
+
+    // Only owner can edit
+    if (video.uploader.toString() !== req.user.id) {
+      return res.status(403).json({
+        message: "Unauthorized",
+      });
+    }
+
+    const updatedVideo = await Video.findByIdAndUpdate(
+      req.params.id,
+      {
+        title: req.body.title,
+        description: req.body.description,
+        category: req.body.category,
+      },
+      {
+        new: true,
+      }
+    );
+
+    res.status(200).json(updatedVideo);
+
+  } catch (error) {
+
+    res.status(500).json({
+      message: error.message,
+    });
+
+  }
+};
+
+exports.deleteVideo = async (req, res) => {
+  try {
+
+    const video = await Video.findById(req.params.id);
+
+    if (!video) {
+      return res.status(404).json({
+        message: "Video not found",
+      });
+    }
+
+    // Only owner can delete
+    if (video.uploader.toString() !== req.user.id) {
+      return res.status(403).json({
+        message: "Unauthorized",
+      });
+    }
+
+    await Video.findByIdAndDelete(req.params.id);
+
+    res.status(200).json({
+      message: "Video deleted successfully",
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+      message: error.message,
+    });
+
+  }
+};

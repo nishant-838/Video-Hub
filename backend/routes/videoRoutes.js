@@ -7,6 +7,8 @@ const {
   getVideoById,
   searchVideos,
   getMyVideos,
+  updateVideo,
+  deleteVideo,
 } = require("../controllers/videoController");
 
 const router = express.Router();
@@ -29,6 +31,18 @@ router.get(
   "/my-uploads",
   authMiddleware,
   getMyVideos
+);
+
+router.put(
+  "/:id",
+  authMiddleware,
+  updateVideo
+);
+
+router.delete(
+  "/:id",
+  authMiddleware,
+  deleteVideo
 );
 
 

@@ -9,6 +9,9 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import SearchResults from "./pages/SearchResults";
 import MyUploads from "./pages/MyUploads";
 import History from "./pages/History";
+import LikedVideos from "./pages/LikedVideos";
+import WatchLater from "./pages/WatchLater";
+import EditVideo from "./pages/EditVideo";
 
 function App() {
   return (
@@ -30,7 +33,30 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="/edit-video/:id" element={
+            <ProtectedRoute>
+              <EditVideo />
+            </ProtectedRoute>
+          } />
           <Route path="/search" element={<SearchResults />} />
+          <Route path="/liked-videos" element={
+              <ProtectedRoute>
+                <LikedVideos />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/watch-later" element={
+              <ProtectedRoute>
+                <WatchLater />
+              </ProtectedRoute>
+              }
+          />
+          <Route path="/watch-later" element={
+              <ProtectedRoute>
+                <WatchLater />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/my-uploads"
             element={
@@ -39,6 +65,7 @@ function App() {
               </ProtectedRoute>
             }
           />
+          
           <Route path="/watch/:id" element={<Watch />} />
           <Route
             path="/history"
