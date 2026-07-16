@@ -17,10 +17,24 @@ const videoSchema = new mongoose.Schema(
       required: true,
     },
 
-    videoUrl: {
-      type: String,
-      required: true,
-    },
+    videoUrls: {
+      original: {
+    type: String,
+    required: true,
+  },
+  "720p": {
+    type: String,
+    required: true,
+  },
+  "480p": {
+    type: String,
+    required: true,
+  },
+  "360p": {
+    type: String,
+    required: true,
+  },
+},
 
     thumbnailUrl: {
       type: String,

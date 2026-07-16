@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+# Environment files
+.env
+backend/.env
+frontend/.env
+
+# Uploaded files
+backend/uploads/
+backend/temp/
+
+# Build output
+dist/
+frontend/dist/
+
+# Logs
+*.log
+
+# macOS
+.DS_Store

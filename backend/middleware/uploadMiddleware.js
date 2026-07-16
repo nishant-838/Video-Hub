@@ -1,14 +1,26 @@
 const multer = require("multer");
-const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const path = require("path");
 
-const cloudinary = require("../config/cloudinary");
+const storage = multer.diskStorage({
 
-const storage = new CloudinaryStorage({
-  cloudinary,
-  params: {
-    folder: "Video-streraming/videos",
-    resource_type: "auto",
+  destination: function (req, file, cb) {
+
+    cb(null, "uploads/");
+
   },
+
+  filename: function (req, file, cb) {
+
+    const uniqueName =
+      Date.now() +
+      "-" +
+      Math.round(Math.random() * 1e9) +
+      path.extname(file.originalname);
+
+    cb(null, uniqueName);
+
+  },
+
 });
 
 const upload = multer({

@@ -9,6 +9,7 @@ const videoRoutes = require("./routes/videoRoutes");
 const uploadRoutes = require("./routes/uploadRoutes");
 const historyRoutes=require("./routes/historyRoutes");
 const likeRoutes=require("./routes/likeRoutes");
+const analyticsRoutes = require("./routes/analyticsRoutes");
 const watchLaterRoutes = require(
   "./routes/watchLaterRoutes"
 );
@@ -23,6 +24,7 @@ app.use("/api/videos", videoRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/history",historyRoutes);
 app.use("/api/likes",likeRoutes);
+app.use("/api/analytics", analyticsRoutes);
 app.use(
   "/api/watch-later",
   watchLaterRoutes
