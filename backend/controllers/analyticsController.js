@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Video = require("../models/Video");
+const Video = require("../models/video");
 const Like = require("../models/Like");
 
 exports.getDashboardAnalytics = async (req, res) => {
