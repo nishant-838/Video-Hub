@@ -10,7 +10,7 @@ import SearchResults from "./pages/SearchResults";
 import MyUploads from "./pages/MyUploads";
 import History from "./pages/History";
 import LikedVideos from "./pages/LikedVideos";
-import WatchLater from "./pages/WatchLater";
+import WatchLater from "./pages/watchLater";
 import EditVideo from "./pages/EditVideo";
 import Analytics from "./pages/Analytics";
 
